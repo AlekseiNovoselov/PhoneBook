@@ -11,5 +11,27 @@
     <string name="drawer_settings_item">Settings</string>
     <string name="drawer_about_item">About</string>
 
+    <!-- Toolbar items -->
+    <string name="toolbar_contacts_item">Contacts</string>
+    <string name="toolbar_settings_item">Settings</string>
+    <string name="toolbar_about_item">About</string>
+
+    <!-- About Fragment -->
+    <string name="about_text" >
+        <![CDATA[
+        <h1>PhoneBook</h1>
+        PhoneBook - mobile android app for creating saving and sharing contacts notes.
+        <br/><br/>
+        Delevoper: Novoselov Aleksei;
+        <br/>
+        TechMail Profile:
+        ]]>
+    </string>
+    <string name="profile_link_text">
+        <![CDATA[
+            https://park.mail.ru/alumni/11/417/
+        ]]>
+    </string>
+
 
 </resources>

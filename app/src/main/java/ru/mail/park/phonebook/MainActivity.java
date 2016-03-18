@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +16,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private MyFragmentManager myFragmentManager;
+    public final static String CURRENT_SCREEN = "ru.mail.park.phoneBook.CURRENT_SCREEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +24,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         myFragmentManager = new MyFragmentManager(MainActivity.this, toolbar);
-        myFragmentManager.addContactsFragment();
+        myFragmentManager.addFragment(MyFragmentManager.Screen.CONTACTS);
     }
 
     @Override
@@ -70,12 +61,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -83,22 +68,32 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Log.d("Navigation", "click");
-        int id = item.getItemId();
-
-        if (id == R.id.contacts) {
-            myFragmentManager.addContactsFragment();
-            Log.d("Navigation", "click contacts");
-        } else if (id == R.id.settings) {
-            myFragmentManager.addSettingsFragment();
-            Log.d("Navigation", "click settings");
-        } else if (id == R.id.about) {
-            myFragmentManager.addAboutFragment();
-            Log.d("Navigation", "click about");
+        switch (item.getItemId()) {
+            case R.id.contacts:
+                myFragmentManager.addFragment(MyFragmentManager.Screen.CONTACTS);
+                break;
+            case R.id.settings:
+                myFragmentManager.addFragment(MyFragmentManager.Screen.SETTINGS);
+                break;
+            case R.id.about:
+                myFragmentManager.addFragment(MyFragmentManager.Screen.ABOUT);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putString(CURRENT_SCREEN, myFragmentManager.getCurrentScreen().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        myFragmentManager.addFragment(MyFragmentManager.Screen.valueOf(savedInstanceState.getString(CURRENT_SCREEN)));
+    }
+
 }

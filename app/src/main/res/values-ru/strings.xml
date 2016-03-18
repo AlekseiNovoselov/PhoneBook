@@ -11,5 +11,28 @@
     <string name="drawer_settings_item">Настройки</string>
     <string name="drawer_about_item">О приложении</string>
 
+    <!-- Toolbar items -->
+    <string name="toolbar_contacts_item">Контакты</string>
+    <string name="toolbar_settings_item">Настройки</string>
+    <string name="toolbar_about_item">О приложении</string>
+
+    <!-- About Fragment -->
+    <string name="about_text" >
+        <![CDATA[
+        <h1>PhoneBook</h1>
+        PhoneBook - мобильное андроид приложения для создания, хранения и расшаривания заметок о контактах.
+        <br/><br/>
+        Разроботчик: Новоселов Алексей;
+        <br/><br/>
+        Профиль выпускника Технопарка:
+        ]]>
+    </string>
+
+    <string name="profile_link_text">
+        <![CDATA[
+            https://park.mail.ru/alumni/11/417/
+        ]]>
+    </string>
+
 
 </resources>
