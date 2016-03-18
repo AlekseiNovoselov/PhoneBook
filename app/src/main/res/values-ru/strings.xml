@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Phonebook</string>
+
+    <string name="navigation_drawer_open">Открыть шторку</string>
+    <string name="navigation_drawer_close">Закрыть шторку</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <!-- Drawer items -->
+    <string name="drawer_contacts_item">Контакты</string>
+    <string name="drawer_settings_item">Настройки</string>
+    <string name="drawer_about_item">О приложении</string>
+
+
+</resources>

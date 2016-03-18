@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Phonebook</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Drawer items -->
+    <string name="drawer_contacts_item">Contacts</string>
+    <string name="drawer_settings_item">Settings</string>
+    <string name="drawer_about_item">About</string>
+
+
+</resources>
